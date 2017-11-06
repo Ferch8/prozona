@@ -1,0 +1,33 @@
+{% extends 'estudiantes/base.html' %}
+
+{% block content %}
+      <div class="portlet-body">
+        <div id="sample_1_wrapper" class="dataTable_wrapper table-responsive">
+          <div class="col-md-12">
+          <table class="table table-striped table-bordered table-hover dataTable no-footer">
+              <tbody>
+                <tr>
+                    <th>Nombre</th>
+                    <td>{{ aula.nombre }}</td>
+                </tr>
+                <tr>
+                    <th>Encargado</th>
+                    <td>{{ aula.encargado }}</td>
+                </tr>
+              </tbody>
+          </table>
+          <table>
+            <tr>
+              <a href="{% url 'aula_list'%}" class="btn btn-default">Regresar</a>
+            </tr>
+            <tr>
+              <a href="{% url 'aula_eliminar' pk=aula.pk %}" class="btn btn-danger">Eliminar</a>
+            </tr>
+            <tr>
+              <a href="{% url 'aula_editar' pk=aula.pk %}" class="btn btn-primary">Editar</a>
+            </tr>
+          </table>
+        </div>
+        </div>
+      </div>
+{% endblock %}

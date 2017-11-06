@@ -2,13 +2,13 @@
 
 {% block content %}
     <div>
-        <h1><a href="#">Listado de cursos</a></h1>
+        <h1><a href="#">Listado de aulas</a></h1>
     </div>
     <div class="col-md-6">
       <div class="btn-group">
-        <a href="{% url 'curso_nuevo'%}">
+        <a href="{% url 'aula_nuevo'%}">
           <button id="sample_editable_1_new" class="btn btn-success">
-            Agregar curso
+            Agregar Aula
             <i class="fa fa-plus"></i>
           </button>
         </a>
@@ -20,20 +20,18 @@
       <thead>
         <tr role="row" class="">
           <th>Nombre</th>
-          <th>Descripcion</th>
-          <th>Profesor</th>
+          <th>Encargado</th>
           <th>Opciones</th>
         </tr>
       </thead>
       <tbody>
-        {% for curso in cursos %}
+        {% for aula in aulas %}
         <tr>
-            <td>{{ curso.nombre }}</td>
-            <td>{{ curso.descripcion|linebreaksbr }}</td>
-            <td>{{ curso.profesor }}</td>
+            <td>{{ aula.nombre }}</td>
+            <td>{{ aula.encargado }}</td>
             <td>
-              <a href="{% url 'curso_ver' pk=curso.pk %}" class="btn btn-warning">Ver</a>
-              <a href="{% url 'curso_editar' pk=curso.pk %}" class="btn btn-primary">Editar</a>
+              <a href="{% url 'aula_ver' pk=aula.pk %}" class="btn btn-warning">Ver</a>
+              <a href="{% url 'aula_editar' pk=aula.pk %}" class="btn btn-primary">Editar</a>
             </td>
         </tr>
         {% endfor %}

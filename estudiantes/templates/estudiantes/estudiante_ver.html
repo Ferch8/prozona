@@ -1,0 +1,45 @@
+{% extends 'estudiantes/base.html' %}
+
+{% block content %}
+      <div class="portlet-body">
+        <div id="sample_1_wrapper" class="dataTable_wrapper table-responsive">
+          <div class="col-md-12">
+          <table class="table table-striped table-bordered table-hover dataTable no-footer">
+              <tbody>
+                <tr>
+                    <th>Nombre</th>
+                    <td>{{ estudiante.nombre }}</td>
+                </tr>
+                <tr>
+                    <th>Carne</th>
+                    <td>{{ estudiante.carne }}</td>
+                </tr>
+                <tr>
+                    <th>Fecha de nacimiento</th>
+                    <td>{{ estudiante.fecha_nacimiento }}</td>
+                </tr>
+                <tr>
+                    <th>Cursos</th>
+                    <td>
+                      {%for Cursos in estudiante.cursos.all%}
+                        {{Cursos}},
+                      {%endfor%}
+                    </td>
+                </tr>
+              </tbody>
+          </table>
+          <table>
+            <tr>
+              <a href="{% url 'estudiante_list'%}" class="btn btn-default">Regresar</a>
+            </tr>
+            <tr>
+              <a href="{% url 'estudiante_eliminar' pk=estudiante.pk %}" class="btn btn-danger">Eliminar</a>
+            </tr>
+            <tr>
+              <a href="{% url 'estudiante_editar' pk=estudiante.pk %}" class="btn btn-primary">Editar</a>
+            </tr>
+          </table>
+        </div>
+        </div>
+      </div>
+{% endblock %}

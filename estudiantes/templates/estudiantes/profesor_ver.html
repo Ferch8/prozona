@@ -1,0 +1,49 @@
+{% extends 'estudiantes/base.html' %}
+
+{% block content %}
+      <div class="portlet-body">
+        <div id="sample_1_wrapper" class="dataTable_wrapper table-responsive">
+          <div class="col-md-12">
+          <table class="table table-striped table-bordered table-hover dataTable no-footer">
+              <tbody>
+                <tr>
+                    <th>Nombre</th>
+                    <td>{{ profesor.nombre }}</td>
+                </tr>
+                <tr>
+                    <th>Apellido</th>
+                    <td>{{ profesor.apellido }}</td>
+                </tr>
+                <tr>
+                    <th>Dpi</th>
+                    <td>{{ profesor.dpi }}</td>
+                </tr>
+                <tr>
+                    <th>Edad</th>
+                    <td>{{ profesor.edad }}</td>
+                </tr>
+                <tr>
+                    <th>Direccion</th>
+                    <td>{{ profesor.direccion }}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>{{ profesor.email }}</td>
+                </tr>
+              </tbody>
+          </table>
+          <table>
+            <tr>
+              <a href="{% url 'profesor_list'%}" class="btn btn-default">Regresar</a>
+            </tr>
+            <tr>
+              <a href="{% url 'profesor_eliminar' pk=profesor.pk %}" class="btn btn-danger">Eliminar</a>
+            </tr>
+            <tr>
+              <a href="{% url 'profesor_editar' pk=profesor.pk %}" class="btn btn-primary">Editar</a>
+            </tr>
+          </table>
+        </div>
+        </div>
+      </div>
+{% endblock %}
