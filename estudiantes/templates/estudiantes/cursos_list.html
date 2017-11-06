@@ -1,44 +1,53 @@
 {% extends 'estudiantes/base.html' %}
 
 {% block content %}
-    <div>
-        <h1><a href="#">Listado de cursos</a></h1>
-    </div>
-    <div class="col-md-6">
-      <div class="btn-group">
-        <a href="{% url 'curso_nuevo'%}">
-          <button id="sample_editable_1_new" class="btn btn-success">
-            Agregar curso
-            <i class="fa fa-plus"></i>
-          </button>
-        </a>
-      </div>
-    </div>
-<div class="col-md-12 col-sm-12 col-xs-12" >
-  <div class="table-responsive">
-    <table class="table table-bordered ">
-      <thead>
-        <tr role="row" class="">
-          <th>Nombre</th>
-          <th>Descripcion</th>
-          <th>Profesor</th>
-          <th>Opciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for curso in cursos %}
-        <tr>
-            <td>{{ curso.nombre }}</td>
-            <td>{{ curso.descripcion|linebreaksbr }}</td>
-            <td>{{ curso.profesor }}</td>
-            <td>
-              <a href="{% url 'curso_ver' pk=curso.pk %}" class="btn btn-warning">Ver</a>
-              <a href="{% url 'curso_editar' pk=curso.pk %}" class="btn btn-primary">Editar</a>
-            </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+
+<div class="portlet-body">
+  <div class="portlet-title">
+    <h1>Listado de cursos</h1>
   </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="btn-group">
+          <a href="{% url 'curso_nuevo'%}">
+            <button id="sample_editable_1_new" class="btn btn-success">
+              Agregar curso
+              <i class="fa fa-plus"></i>
+            </button>
+          </a>
+        </div>
+      </div>
+      <br>
+      <br>
+  <div class="col-md-12 col-sm-12 col-xs-12" >
+    <div class="table-responsive">
+      <table class="table table-hover ">
+        <thead>
+          <tr role="row" class="">
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Profesor</th>
+            <th>Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for curso in cursos %}
+          <tr>
+              <td>{{ curso.nombre }}</td>
+              <td>{{ curso.descripcion|linebreaksbr }}</td>
+              <td>{{ curso.profesor }}</td>
+              <td>
+                <a href="{% url 'curso_ver' pk=curso.pk %}" class="btn btn-warning">Ver</a>
+                <a href="{% url 'curso_editar' pk=curso.pk %}" class="btn btn-primary">Editar</a>
+              </td>
+          </tr>
+          {% endfor %}
+
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+ </div>
 </div>
 {% endblock %}

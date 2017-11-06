@@ -2,7 +2,9 @@ from django.shortcuts import render,redirect, get_object_or_404
 from django.contrib import messages
 from .forms import EstudianteForm, CursoForm, ProfesorForm, AulaForm
 from estudiantes.models import Estudiante, Asignacion, Curso, Profesor, Aula
+from django.contrib.auth.decorators import login_required
 # Create your views here.
+@login_required
 def estudiante_nuevo(request):
     if request.method == "POST":
         formulario = EstudianteForm(request.POST)
@@ -16,6 +18,7 @@ def estudiante_nuevo(request):
         formulario = EstudianteForm()
     return render(request, 'estudiantes/estudiante_nuevo.html', {'formulario': formulario})
 
+@login_required
 def curso_nuevo(request):
     if request.method=="POST":
         formulario = CursoForm(request.POST)
@@ -149,3 +152,6 @@ def aula_eliminar(request,pk):
     aula = get_object_or_404(Aula,pk=pk)
     aula.delete()
     return redirect('aula_list')
+
+def main(request):
+    return render(request, 'estudiantes/main.html')

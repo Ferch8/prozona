@@ -27,4 +27,6 @@ urlpatterns = [
     url(r'^aula/list/$', views.aula_list, name='aula_list'),
     url(r'^aula/(?P<pk>[0-9]+)/eliminar/$', views.aula_eliminar, name='aula_eliminar'),
     url(r'^aula/(?P<pk>[0-9]+)/ver/$', views.aula_ver, name='aula_ver'),
+
+    url(r'^$', views.main, name='main'),
 ]
