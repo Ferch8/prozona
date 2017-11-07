@@ -30,6 +30,7 @@ def curso_nuevo(request):
         formulario = CursoForm()
     return render(request, 'estudiantes/curso_nuevo.html', {'formulario':formulario})
 
+@login_required
 def profesor_nuevo(request):
     if request.method == "POST":
         formulario = ProfesorForm(request.POST)
@@ -41,6 +42,7 @@ def profesor_nuevo(request):
         formulario = ProfesorForm()
     return render(request, 'estudiantes/profesor_nuevo.html', {'formulario': formulario})
 
+@login_required
 def aula_nuevo(request):
     if request.method == "POST":
         formulario = AulaForm(request.POST)
@@ -52,6 +54,7 @@ def aula_nuevo(request):
         formulario = AulaForm()
     return render(request, 'estudiantes/aula_nuevo.html', {'formulario': formulario})
 
+@login_required
 def estudiante_editar(request, pk):
     estudiante = get_object_or_404(Estudiante,pk=pk)
     if request.method == "POST":
@@ -66,6 +69,7 @@ def estudiante_editar(request, pk):
         formulario = EstudianteForm(instance=estudiante)
     return render(request, 'estudiantes/estudiante_editar.html', {'formulario': formulario})
 
+@login_required
 def curso_editar(request,pk):
     curso = get_object_or_404(Curso,pk=pk)
     if request.method=="POST":
@@ -77,6 +81,7 @@ def curso_editar(request,pk):
         formulario=CursoForm(instance=curso)
     return render(request, 'estudiantes/curso_editar.html', {'formulario':formulario})
 
+@login_required
 def profesor_editar(request, pk):
     profesor = get_object_or_404(Profesor, pk=pk)
     if request.method == "POST":
@@ -89,6 +94,7 @@ def profesor_editar(request, pk):
         formulario = ProfesorForm(instance=profesor)
     return render(request, 'estudiantes/profesor_editar.html', {'formulario': formulario})
 
+@login_required
 def aula_editar(request, pk):
     aula = get_object_or_404(Aula, pk=pk)
     if request.method == "POST":
@@ -101,53 +107,65 @@ def aula_editar(request, pk):
         formulario = AulaForm(instance=aula)
     return render(request, 'estudiantes/aula_editar.html', {'formulario': formulario})
 
+@login_required
 def estudiante_list(request):
     estudiantes = Estudiante.objects.all()
     return render(request, 'estudiantes/estudiante_list.html', {'estudiantes': estudiantes})
 
+@login_required
 def cursos_list(request):
     cursos = Curso.objects.all()
     return render(request, 'estudiantes/cursos_list.html', {'cursos': cursos})
 
+@login_required
 def profesor_list(request):
     profesores = Profesor.objects.all()
     return render(request, 'estudiantes/profesores_list.html', {'profesores': profesores})
 
+@login_required
 def aula_list(request):
     aulas = Aula.objects.all()
     return render(request, 'estudiantes/aula_list.html', {'aulas': aulas})
 
+@login_required
 def estudiante_ver(request,pk):
     estudiante = get_object_or_404(Estudiante,pk=pk)
     return render(request, 'estudiantes/estudiante_ver.html', {'estudiante': estudiante})
 
+@login_required
 def curso_ver(request,pk):
     curso = get_object_or_404(Curso,pk=pk)
     return render(request, 'estudiantes/curso_ver.html', {'curso': curso})
 
+@login_required
 def profesor_ver(request,pk):
     profesor = get_object_or_404(Profesor,pk=pk)
     return render(request, 'estudiantes/profesor_ver.html', {'profesor': profesor})
 
+@login_required
 def aula_ver(request,pk):
     aula = get_object_or_404(Aula,pk=pk)
     return render(request, 'estudiantes/aula_ver.html', {'aula': aula})
 
+@login_required
 def estudiante_eliminar(request,pk):
     estudiante = get_object_or_404(Estudiante,pk=pk)
     estudiante.delete()
     return redirect('estudiante_list')
 
+@login_required
 def curso_eliminar(request,pk):
     curso = get_object_or_404(Curso,pk=pk)
     curso.delete()
     return redirect('curso_list')
 
+@login_required
 def profesor_eliminar(request,pk):
     profesor = get_object_or_404(Profesor,pk=pk)
     profesor.delete()
     return redirect('profesor_list')
 
+@login_required
 def aula_eliminar(request,pk):
     aula = get_object_or_404(Aula,pk=pk)
     aula.delete()
