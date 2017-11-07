@@ -1,13 +1,16 @@
 {% extends 'estudiantes/base.html' %}
 
     {% block content %}
-
-        <h1>Nuevo curso</h1>
-
+    <div class="portlet-body">
+        <div class="portlet-title">
+          <h1>Editar curso</h1>
+        </div>
+    <div class="row">
         <form method="POST" class="post-form">{% csrf_token %}
             {{ formulario.as_p }}
             <button type="submit" class="save btn btn-default">Guardar</button>
             <a href="{% url 'cursos_list'%}" class="btn btn-default">Regresar</a>
         </form>
-
+      </div>
+      </div>
     {% endblock %}
